@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/hostel Finder</title>
+    <style>
+        /* =========================================
+        1. NAVIGATION BAR (HEADER)
+        ========================================= */
+        header {
+            background-color: #fff;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+        }
+
+        /* =========================================
+        2. HERO SECTION & GLOBAL SEARCH
+        ========================================= */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .search-input {
+            text-align: start;
+            margin-left: 8%;
+        }
+
+        .search-input input {
+            width: 90%;
+        }
+
+        .search-box {
+            background-color: #98a1b4;
+            border-radius: 10%;
+            height: 270px;
+            width: 320px;
+            padding-top: 13px;
+        }
+
+        .search-btn {
+            background-color: #ff6b6b;
+            color: #fff;
+            border: none;
+            padding: 0 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .search-btn:hover {
+            background-color: #ff4757;
+        }
+
+
+        /* =========================================
+        3. FOOTER SECTION
+        ========================================= */
+        .footer {
+            background-color: #2f3542;
+            color: #fff;
+            padding: 60px 50px 20px;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: auto;
+            border-bottom: 1px solid #57606f;
+            padding-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: #f1f2f6;
+        }
+
+        .footer-col p {
+            color: #ced6e0;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            text-decoration: none;
+            color: #ced6e0;
+            transition: 0.3s ease;
+            font-size: 14px;
+        }
+
+        .footer-col ul li a:hover {
+            color: #ff6b6b;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            background: #57606f;
+            color: #fff;
+            text-decoration: none;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+            transition: 0.3s;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .social-links a:hover {
+            background: #ff6b6b;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            color: #ced6e0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--=====================
+    1. Header
+    ======================-->
+    <header>
+        <a href="#" class="logo">🌍 NomadsNest</a>
+        <div class="nav-links">
+            <a href="hotel manage.html">Home</a>
+            <a href="sign-up.html">Sign Up</a>
+        </div>
+    </header>
+
+    <!--=========================
+    2. login bar
+    ==========================-->
+    <section class="hero">
+        <h1>LOGIN YOUR HOSTEL</h1>
+        <p>Search over 30,000 hostels in 170+ countries.</p>
+
+        <div class="search-box">
+            <div class="search-input">
+                <label>Name : </label>
+                <input type="text" placeholder="Enter name....">
+            </div><br>
+            <div class="search-input">
+                <label>Hostel name : </label>
+                <input type="text" placeholder="Enter hostel name....">
+            </div><br>
+            <div class="search-input">
+                <label>Phone No. : </label>
+                <input type="number" placeholder="Phone number 123..">
+            </div><br>
+            <div class="search-input">
+                <label>Password : </label>
+                <input type="password" placeholder="Enter password....">
+            </div><br>
+            <button class="search-btn">LOGIN</button>
+            <button class="search-btn"><a href="sign-up.html" style="text-decoration: none; color:#f1f2f6">
+                    New register</a></button>
+        </div>
+    </section>
+
+    <!--=========================
+    3. Footer
+    ==========================-->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>🌍 NomadsNest</h3>
+                <p>Your ultimate global hostel finder. Discover affordable stays, meet fellow travelers, and explore the
+                    world, one hostel at a time.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Top Destinations</a></li>
+                    <li><a href="#">Latest Hostels</a></li>
+                    <li><a href="#">Travel Blog</a></li>
+                    <li><a href="#">List Your Property</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#">Fb</a>
+                    <a href="#">Ig</a>
+                    <a href="#">Tw</a>
+                    <a href="#">Yt</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 NomadsNest. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

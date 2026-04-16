@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Hotel Finder</title>
+    <link rel="shortcut icon" href="fav.jpg" type="image/x-icon">
+    <style>
+        /* =========================================
+        1. GLOBAL SETTINGS & TYPOGRAPHY
+        ========================================= */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        /* =========================================
+        2. NAVIGATION BAR (HEADER)
+        ========================================= */
+        header {
+            background-color: #fff;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+        }
+
+        /* =========================================
+        3. HERO SECTION & GLOBAL SEARCH
+        ========================================= */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            background: #fff;
+            padding: 15px;
+            border-radius: 50px;
+            display: flex;
+            gap: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .search-input {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 5px 15px;
+            border-right: 1px solid #ddd;
+        }
+
+        .search-input:last-of-type {
+            border-right: none;
+        }
+
+        .search-input label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        .search-input input {
+            border: none;
+            outline: none;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .search-btn {
+            background-color: #ff6b6b;
+            color: #fff;
+            border: none;
+            padding: 0 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .search-btn:hover {
+            background-color: #ff4757;
+        }
+
+        /* =========================================
+        4. HOSTEL CARDS SECTION
+        ========================================= */
+        .hostels-section {
+            padding: 60px 50px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #2f3542;
+        }
+
+        .hostel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .hostel-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .hostel-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .hostel-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .hostel-info {
+            padding: 20px;
+        }
+
+        .location-tag {
+            color: #747d8c;
+            font-size: 13px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .hostel-name {
+            font-size: 1.2rem;
+            color: #2f3542;
+            margin-bottom: 10px;
+        }
+
+        .rating {
+            background: #ffa502;
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .price-section {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2ed573;
+        }
+
+        .book-btn {
+            text-decoration: none;
+            background: #1e90ff;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* =========================================
+        5. FOOTER SECTION
+        ========================================= */
+        .footer {
+            background-color: #2f3542;
+            color: #fff;
+            padding: 60px 50px 20px;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: auto;
+            border-bottom: 1px solid #57606f;
+            padding-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: #f1f2f6;
+        }
+
+        .footer-col p {
+            color: #ced6e0;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            text-decoration: none;
+            color: #ced6e0;
+            transition: 0.3s ease;
+            font-size: 14px;
+        }
+
+        .footer-col ul li a:hover {
+            color: #ff6b6b;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            background: #57606f;
+            color: #fff;
+            text-decoration: none;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+            transition: 0.3s;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .social-links a:hover {
+            background: #ff6b6b;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            color: #ced6e0;
+            font-size: 14px;
+        }
+
+        /* =========================================
+        6. RESPONSIVE DESIGN (MOBILE & TABLETS)
+        ========================================= */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .search-box {
+                flex-direction: column;
+                border-radius: 15px;
+                padding: 20px;
+            }
+
+            .search-input {
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+                padding: 10px 0;
+            }
+
+            .search-input:last-of-type {
+                border-bottom: none;
+            }
+
+            .search-btn {
+                padding: 15px;
+                margin-top: 10px;
+            }
+
+            .hostels-section {
+                padding: 40px 20px;
+            }
+
+            .footer {
+                padding: 40px 20px 20px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="#" class="logo">🌍 NomadsNest</a>
+        <div class="nav-links">
+            <a href="login.html">Login</a>
+            <a href="sign-up.html">Sign Up</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Find Your Vibe, Anywhere in the World.</h1>
+        <p>Search over 30,000 hostels in 170+ countries.</p>
+
+
+        <button class="search-btn"><a href="search.html"
+                style="color: white; font-size:larger; text-decoration:none">Search</a></button>
+    </section>
+
+    <section class="hostels-section">
+        <h2 class="section-title">Popular Hostels Globally</h2>
+
+        <div class="hostel-grid">
+            <div class="hostel-card">
+                <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60"
+                    alt="Hostel" class="hostel-image">
+                <div class="hostel-info">
+                    <div class="location-tag">📍 Tokyo, Japan</div>
+                    <h3 class="hostel-name">M.R.S Hostel</h3>
+                    <span class="rating">⭐ 9.2 Superb</span>
+                    <div class="price-section">
+                        <div>
+                            <span style="font-size: 12px; color: #777;">Dorms from</span><br>
+                            <span class="price">₹2500</span><span style="font-size: 12px;"> /night</span>
+                        </div>
+                        <a href="#" class="book-btn">View Rooms</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hostel-card">
+                <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60"
+                    alt="Hostel" class="hostel-image">
+                <div class="hostel-info">
+                    <div class="location-tag">📍 Amsterdam, Netherlands</div>
+                    <h3 class="hostel-name">The Devid Hostel</h3>
+                    <span class="rating">⭐ 8.8 Fabulous</span>
+                    <div class="price-section">
+                        <div>
+                            <span style="font-size: 12px; color: #777;">Dorms from</span><br>
+                            <span class="price">₹2800</span><span style="font-size: 12px;"> /night</span>
+                        </div>
+                        <a href="#" class="book-btn">View Rooms</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hostel-card">
+                <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60"
+                    alt="Hostel" class="hostel-image">
+                <div class="hostel-info">
+                    <div class="location-tag">📍 Goa, India</div>
+                    <h3 class="hostel-name"> My Hostel Goa (Vagator)</h3>
+                    <span class="rating">⭐ 9.5 Superb</span>
+                    <div class="price-section">
+                        <div>
+                            <span style="font-size: 12px; color: #777;">Dorms from</span><br>
+                            <span class="price">₹5600</span><span style="font-size: 12px;"> /night</span>
+                        </div>
+                        <a href="#" class="book-btn">View Rooms</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>🌍 NomadsNest</h3>
+                <p>Your ultimate global hostel finder. Discover affordable stays, meet fellow travelers, and explore the
+                    world, one hostel at a time.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Top Destinations</a></li>
+                    <li><a href="#">Latest Hostels</a></li>
+                    <li><a href="#">Travel Blog</a></li>
+                    <li><a href="#">List Your Property</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#">Fb</a>
+                    <a href="#">Ig</a>
+                    <a href="#">Tw</a>
+                    <a href="#">Yt</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 NomadsNest. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
